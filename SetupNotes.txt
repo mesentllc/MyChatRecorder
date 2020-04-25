@@ -1,0 +1,3 @@
+﻿To install Graph Beta -- go to Tools -> NuGet Package Manager -> Package Manager Console:
+Install-Package Microsoft.Graph.Beta -Version 0.17.0-preview
+Install-Package Microsoft.Graph.Auth -IncludePrerelease
