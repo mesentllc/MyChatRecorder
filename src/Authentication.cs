@@ -12,7 +12,7 @@ namespace Graph {
 		private const string tenantId = "b945c813-dce6-41f8-8457-5a12c2fe15bf";
 		private const string appKey = "I8bt:2uln]SBN2RTAk1HLYBsZQ@HuPn?";
 		private const string resource = "https://graph.windows.net";
-		static string[] apiScopes = new string[] { "Chat.Read" };
+		static string[] apiScopes = new string[] { "Chat.Read", "Files.Read", "Files.ReadWrite", "Files.Read.All", "Files.ReadWrite.All", "Sites.Read.All", "Sites.ReadWrite.All" };
 		static string authority = String.Format(CultureInfo.InvariantCulture, asureActiveDirectory, tenantId);
 
 		private static AuthenticationContext context = null;

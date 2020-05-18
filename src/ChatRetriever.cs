@@ -1,5 +1,4 @@
 ﻿using Microsoft.Graph;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -32,10 +31,9 @@ namespace Graph {
 			Console.WriteLine(chatJson.Result);
 		}
 
-		public void GetAllChatReferences() {
+		public void GetAllChatReferences(GraphServiceClient client) {
 			IList<Chat> chatReferences;
 
-			GraphServiceClient client = new GraphServiceClient(Authentication.GetCredentialProvider());
 			Task<IUserChatsCollectionPage> chatPage = client.Me.Chats.Request().GetAsync();
 			chatPage.Wait();
 			while(true) {
