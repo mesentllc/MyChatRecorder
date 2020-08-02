@@ -10,10 +10,12 @@ using Directory = System.IO.Directory;
 using File = System.IO.File;
 
 namespace Graph {
+
 	class ChatRetriever {
 		private const string rootUri = "https://graph.windows.net/b945c813-dce6-41f8-8457-5a12c2fe15bf/users?api-version=1.6";
 		private static HttpClient httpClient = new HttpClient();
 		private static DateTime today = DateTime.Today;
+		private static int sequence = 1;
 
 		private async Task<string> GetViaHttp() {
 			string json = null;
@@ -125,7 +127,11 @@ namespace Graph {
 			foreach(string name in nameSet) {
 				members += name + "_";
 			}
-			return members.Substring(0, members.Length - 1);
+			string proposedFilename = members.Substring(0, members.Length - 1);
+			if (proposedFilename.Length > 100) {
+				proposedFilename = proposedFilename.Substring(0, 100) + "-" + sequence++;
+			}
+			return proposedFilename;
 		}
 
 		private List<string> GetMembers(GraphServiceClient client, string chatId) {
