@@ -98,8 +98,14 @@ namespace Graph {
 				if (messageReference.Count == 0) {
 					break;
 				}
-				chatMessagePage = messages.NextPageRequest.GetAsync();
-				chatMessagePage.Wait();
+				try {
+					chatMessagePage = messages.NextPageRequest.GetAsync();
+					chatMessagePage.Wait();
+				}
+				catch (Exception ae) {
+					Console.WriteLine("Exception Caught: " + ae.Message);
+					break;
+				}
 			}
 			return messageDetailList;
 		}
